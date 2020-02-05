@@ -21,7 +21,7 @@ namespace ShoppingApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ShoppingContext>(options =>
-                options.UseInMemoryDatabase("ShoppingList"));
+                options.UseInMemoryDatabase(databaseName: "ShoppingList"));
             services.AddControllers();
         }
 
