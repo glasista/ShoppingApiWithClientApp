@@ -9,6 +9,7 @@ import { ShoppingItemsComponent } from './shopping-items/shopping-items.componen
 import { ShoppingItemComponent } from './shopping-item/shopping-item.component';
 import { ShoppingItemAddEditComponent } from './shopping-item-add-edit/shopping-item-add-edit.component';
 import { ShoppingItemService } from './services/shopping-item.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ShoppingItemService } from './services/shopping-item.service';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     ShoppingItemService

@@ -1,1 +1,7 @@
-<p>shopping-item works!</p>
+<ng-container *ngIf="(shoppingItem$ | async) as shoppingItem; else loading">
+
+    <h1>{{ shoppingItem.name }}</h1>
+    <div>{{ shoppingItem.details }}</div>
+    <div *ngIf="shoppingItem.isTaken; else elseBlock"> <i class="material-icons">done</i> </div>
+    <ng-template #elseBlock><i class="material-icons">close</i></ng-template></ng-container>
+<ng-template #loading>Ładowanie...</ng-template>

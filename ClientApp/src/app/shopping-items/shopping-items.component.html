@@ -1,1 +1,43 @@
-<p>shopping-items works!</p>
+<p>Lista zakupów</p>
+
+<p *ngIf="!(shoppingItems$ | async)"><em>Ładowanie...</em></p>
+<p>
+    <a [routerLink]="['/Add']" class="btn btn-primary">Nowy element</a>
+</p>
+
+<table class="table table-sm" *ngIf="(shoppingItems$ | async)?.length>0">
+    <thead>
+        <tr>
+            <th>Lp.</th>
+            <th>Nazwa</th>
+            <th>Szczegóły</th>
+            <th></th>
+            <th></th>
+            <th> <i class="material-icons">done</i> </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let shoppingItem of (shoppingItems$ | async)">
+            <td>{{ shoppingItem.id }}</td>
+            <td><a [routerLink]="['/ShoppingItems/',shoppingItem.id]">{{ shoppingItem.name }}</a></td>
+            <td>{{ shoppingItem.details }}</td>
+            <td>
+                <a [routerLink]="['/ShoppingItems/Edit/',shoppingItem.id]"> 
+                    <i class="material-icons">edit</i> 
+                </a>
+            </td>
+            <td>
+                <a [routerLink]="" (click)="delete(shoppingItem.id)"> 
+                    <i class="material-icons">delete</i> 
+                </a>
+            </td>
+            <td *ngIf="shoppingItem.isTaken;else elseBlock"><i class="material-icons">done</i> </td>
+            <ng-template #elseBlock>
+              <td>
+                <i class="material-icons">close</i>
+              </td>
+            </ng-template>
+        </tr>
+    </tbody>
+</table>
+       

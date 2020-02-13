@@ -6,7 +6,7 @@ import { ShoppingItemAddEditComponent } from './shopping-item-add-edit/shopping-
 
 const routes: Routes = [
   { path: '', component: ShoppingItemsComponent, pathMatch: 'full'},
-  { path: 'ShoppingItem/:id', component: ShoppingItemComponent },
+  { path: 'ShoppingItems/:id', component: ShoppingItemComponent },
   { path: 'Add', component: ShoppingItemAddEditComponent },
   { path: 'ShoppingItems/Edit/:id', component: ShoppingItemAddEditComponent },
   { path: '**', redirectTo: '/' }

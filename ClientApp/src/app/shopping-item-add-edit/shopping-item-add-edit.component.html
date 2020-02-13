@@ -1,1 +1,29 @@
-<p>shopping-item-add-edit works!</p>
+<h1 *ngIf="actionType == 'Add'; else elseBlock">Dodaj element do listy zakupów</h1>
+<ng-template #elseBlock>Edytuj element listy zakupów</ng-template>
+
+<form [formGroup]="form" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+    <div class="form-group row">
+        <label class="contol-label col-md-12">Nazwa</label>
+        <div class="col-md-12">
+            <input class="form-control" type="text" formControlName="name">
+        </div>
+        <span class="text-danger ml-3" *ngIf="name.invalid && formDir.submitted">
+            Proszę podać nazwe.
+        </span>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-md-12" for="details">Szczegóły</label>
+        <div class="col-md-12">
+            <textarea class="form-control" rows="5" formControlName="details"></textarea>
+        </div>
+    </div>
+    <div class="form-group row">
+      <label class="control-label col-3" for="isTaken">Zakupiono?</label>
+      <input type="checkbox" class="col-3" formControlName="isTaken" styke="width:40px,height:40px"/>
+    </div>
+    <div class="form-group row">
+          <button class="btn btn-secondary float-left col-md-4" (click)="cancel()">Anuluj</button>
+          <div class="col-md-4">
+          </div><button type="submit" class="btn btn-success float-right col-md-4" >Zapisz</button>        
+    </div>
+</form>
